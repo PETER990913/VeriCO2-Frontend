@@ -12,7 +12,27 @@ function LoginPage({ SERVER_URL }) {
   const [errorMessage, setErrorMessage] = useState('')
   const cookies = new Cookies();
   return (
-    <div className='LoginPage'>
+    <div className='LoginPage' onKeyUp={(e) => {
+      if (e.key === "Enter") if (email === '') setErrorMessage('Please type Email Address.')
+      else if (password === '') setErrorMessage('Please type Password.')
+      else {
+        setErrorMessage('');
+        var obj = { email: email, password: password }
+        axios.post(SERVER_URL + '/signin', obj)
+          .then(res => {
+            console.log(res.data)
+            if (!res.data.success) {
+              cookies.set('token', null, { path: '/' });
+              setErrorMessage('Incorrect Email Adress or Password.')
+            }
+            else {
+              cookies.set('token', res?.data?.accessToken, { path: '/' });
+              setErrorMessage('')
+              navigate('/calculation')
+            }
+          })
+      }
+    }}>
       <img src={loginLeft} alt="Login Left" className='login-left' />
       <div className='right'>
         <div className='center'>

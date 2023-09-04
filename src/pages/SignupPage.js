@@ -20,7 +20,9 @@ function SignupPage({ SERVER_URL }) {
     const [errorMessage, setErrorMessage] = useState('')
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
-        <div className='SignupPage'>
+        <div className='SignupPage' onKeyUp={(e) => {
+            if (e.key === "Enter") navigate('/login')
+        }}>
             <img src={signupLeft} alt="Signup Left" className='signup-left' />
             <div className='right'>
                 <div className='center'>
