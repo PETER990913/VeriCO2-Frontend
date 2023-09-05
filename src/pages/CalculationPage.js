@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setTab } from '../redux/actions/index';
+import '../App.scss';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
@@ -75,32 +76,32 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                         <tr>
                                             <td>Cement</td>
                                             <td>Supplier C</td>
-                                            <td>200,000</td>
-                                            <td>0.15</td>
+                                            <td><input type='text' placeholder='200000' className='Input_form'/></td>
+                                            <td><input type='text' placeholder='0.15' className='Input_form'/></td>
                                         </tr>
                                         <tr>
                                             <td>Plaster</td>
                                             <td>Supplier D</td>
-                                            <td>600,000</td>
-                                            <td>0.10</td>
+                                            <td><input type='text' placeholder='600000' className='Input_form'/></td>
+                                            <td><input type='text' placeholder='0.1' className='Input_form'/></td>
                                         </tr>
                                         <tr>
                                             <td>Paint</td>
                                             <td>Supplier E</td>
-                                            <td>200,000</td>
-                                            <td>0.10</td>
+                                            <td><input type='text' placeholder='200000' className='Input_form'/></td>
+                                            <td><input type='text' placeholder='0.1' className='Input_form'/></td>
                                         </tr>
                                         <tr>
                                             <td>Timber</td>
                                             <td>Supplier F</td>
-                                            <td>100,000</td>
-                                            <td>0.25</td>
+                                            <td><input type='text' placeholder='100000' className='Input_form'/></td>
+                                            <td><input type='text' placeholder='0.25' className='Input_form'/></td>
                                         </tr>
                                         <tr>
                                             <td>Concrete</td>
                                             <td>Supplier G</td>
-                                            <td>50,000</td>
-                                            <td>0.20</td>
+                                            <td><input type='text' placeholder='50000' className='Input_form'/></td>
+                                            <td><input type='text' placeholder='0.20' className='Input_form'/></td>
                                         </tr>
                                     </tbody>
                                 </table>
