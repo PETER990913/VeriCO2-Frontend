@@ -20,7 +20,8 @@ import WasteAverage from './inputTable/4_2';
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const [result, setResult] = useState(0);
+    const [result1_1, setResult1_1] = useState(0);
+    const [result1_2, setResult1_2] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
@@ -46,8 +47,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }, [SERVER_URL, navigate])
     const displaycase = () => {
-        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult(data) }} />
-        if (category === 0 & method === 1) return <PurchasedHybrid />
+        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
+        if (category === 0 & method === 1) return <PurchasedHybrid onChange={(data) => { setResult1_2(data) }} />
         if (category === 0 & method === 2) return <PurchasedAverage />
         if (category === 0 & method === 3) return <PurchasedSpend />
         if (category === 3 & method === 0) return <UpstreamFuel />
@@ -55,7 +56,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 3 & method === 2) return <UpstreamSpend />
         if (category === 4 & method === 0) return <WasteWaste />
         if (category === 4 & method === 1) return <WasteAverage />
-        else return <PurchasedSupplier onChange={(data) => { setResult(data) }} />
+        else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
     return (
         <div className='CalculationPage' onClick={() => setSideBarFlag(false)}>
@@ -96,14 +97,15 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     </div>
                     <div className='box'>
                         <span className='title'>Emission Overview</span>
+                        
                         <div className='scopes-container'>
                             <div className='scopes'>
                                 <div className='top'>
                                     <span>Scope 3 Emission:</span>
                                     <div>
                                         {startCalculation ?
-                                            <span></span> :
-                                            <span>{result / 1000}K</span>
+                                            <span>{result1_1 / 1000}K</span> :
+                                            <span></span>
                                         }
                                         <span>KgCO2e</span>
                                     </div>
@@ -112,15 +114,15 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                     <div className='item'>
                                         <span>Scope 1:</span>
                                         {startCalculation ?
-                                            <span></span> :
-                                            <span>{(result / 1000 * 0.54).toFixed(1)}K</span>
+                                            <span>{(result1_1 / 1000 * 0.54).toFixed(1)}K</span> :
+                                            <span></span>
                                         }
                                     </div>
                                     <div className='item'>
                                         <span>Scope 2:</span>
                                         {startCalculation ?
-                                            <span></span> :
-                                            <span>{(result / 1000 * 0.46).toFixed(1)}K</span>
+                                            <span>{(result1_1 / 1000 * 0.46).toFixed(1)}K</span> :
+                                            <span></span>
                                         }
                                     </div>
                                 </div>
@@ -128,8 +130,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                         </div>
                         <span className='title'>Scope 3 YOY Performance:</span>
                         <div className='performance'>
-                            <span>{(result / 1000 * 0.968).toFixed(1)}K</span>
-                            <span>{result / 1000}K</span>
+                            <span>{(result1_1 / 1000 * 0.968).toFixed(1)}K</span>
+                            <span>{result1_1 / 1000}K</span>
                             <span>-3.2%</span>
                         </div>
                         <span className='title'>Emission Source:</span>
@@ -139,12 +141,14 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                 <span className='right'>46%</span>
                             </div>
                         </div>
+                        
                         {startCalculation ?
-                            <div className='button' onClick={() => { setStartCalculation(!startCalculation) }}>
-                                Start Calculation
-                            </div> :
                             <div className='button red' onClick={() => { setStartCalculation(!startCalculation) }}>
                                 Cancel Calculation
+                            </div>
+                            :
+                            <div className='button' onClick={() => { setStartCalculation(!startCalculation) }}>
+                                Start Calculation
                             </div>
                         }
                         <div className='button red' onClick={() => navigate('/display')} >Emission display</div>

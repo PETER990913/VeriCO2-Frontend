@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss'
-function PurchasedHybrid(onChange) {
+function PurchasedHybrid({onChange}) {
     const [v0, setV0]= useState(5000);
     const [v1, setV1]= useState(0.5);
     const [v2, setV2]= useState(2500);
@@ -44,12 +44,12 @@ function PurchasedHybrid(onChange) {
                         <tr>
                             <td>Electricity</td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
-                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
+                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV1(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Natural gas</td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
+                            <td><input type='text' value={v2} className='Input_form' onChange={(e)=>{setV2(e.target.value)}}/></td>
+                            <td><input type='text' value={v3} className='Input_form' onChange={(e)=>{setV3(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <th></th>
@@ -58,23 +58,23 @@ function PurchasedHybrid(onChange) {
                         </tr>
                         <tr>
                             <td>Cotton</td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
-                            <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
+                            <td><input type='text' value={v4} className='Input_form' onChange={(e)=>{setV4(e.target.value)}}/></td>
+                            <td><input type='text' value={v5} className='Input_form' onChange={(e)=>{setV5(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Polymer</td>
-                            <td><input type='text' defaultValue='2500' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='5.0' className='Input_form' /></td>
+                            <td><input type='text' value={v6} className='Input_form' onChange={(e)=>{setV6(e.target.value)}}/></td>
+                            <td><input type='text' value={v7} className='Input_form' onChange={(e)=>{setV7(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Chemical A</td>
-                            <td><input type='text' defaultValue='500' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='2.0' className='Input_form' /></td>
+                            <td><input type='text' value={v8} className='Input_form' onChange={(e)=>{setV8(e.target.value)}}/></td>
+                            <td><input type='text' value={v9} className='Input_form' onChange={(e)=>{setV9(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Chemical B</td>
-                            <td><input type='text' defaultValue='500' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='1.5' className='Input_form' /></td>
+                            <td><input type='text' value={v10} className='Input_form' onChange={(e)=>{setV10(e.target.value)}}/></td>
+                            <td><input type='text' value={v11} className='Input_form' onChange={(e)=>{setV11(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <th></th>
@@ -83,23 +83,23 @@ function PurchasedHybrid(onChange) {
                         </tr>
                         <tr>
                             <td>Cotton</td>
-                            <td><input type='text' defaultValue='1000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.01' className='Input_form' /></td>
+                            <td><input type='text' value={v12} className='Input_form' onChange={(e)=>{setV12(e.target.value)}}/></td>
+                            <td><input type='text' value={v13} className='Input_form' onChange={(e)=>{setV13(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Polymer</td>
-                            <td><input type='text' defaultValue='2500' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.02' className='Input_form' /></td>
+                            <td><input type='text' value={v14} className='Input_form' onChange={(e)=>{setV14(e.target.value)}}/></td>
+                            <td><input type='text' value={v15} className='Input_form' onChange={(e)=>{setV15(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Chemical A</td>
-                            <td><input type='text' defaultValue='800' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.05' className='Input_form' /></td>
+                            <td><input type='text' value={v16} className='Input_form' onChange={(e)=>{setV16(e.target.value)}}/></td>
+                            <td><input type='text' value={v17} className='Input_form' onChange={(e)=>{setV17(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Chemical B</td>
-                            <td><input type='text' defaultValue='200' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.10' className='Input_form' /></td>
+                            <td><input type='text' value={v18} className='Input_form' onChange={(e)=>{setV18(e.target.value)}}/></td>
+                            <td><input type='text' value={v19} className='Input_form' onChange={(e)=>{setV19(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <th></th>
@@ -108,8 +108,8 @@ function PurchasedHybrid(onChange) {
                         </tr>
                         <tr>
                             <td>Waste sent to landfill</td>
-                            <td><input type='text' defaultValue='100' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.5' className='Input_form' /></td>
+                            <td><input type='text' value={v20} className='Input_form' onChange={(e)=>{setV20(e.target.value)}}/></td>
+                            <td><input type='text' value={v21} className='Input_form' onChange={(e)=>{setV21(e.target.value)}}/></td>
                         </tr>
                     </tbody>
                 </table>
