@@ -7,14 +7,28 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setTab } from '../redux/actions/index';
 import '../App.scss';
+import PurchasedSupplier from './inputTable/1_1';
+import PurchasedHybrid from './inputTable/1_2';
+import PurchasedAverage from './inputTable/1_3';
+import PurchasedSpend from './inputTable/1_4';
+import UpstreamFuel from './inputTable/3_1';
+import UpstreamDistance from './inputTable/3_2';
+import UpstreamSpend from './inputTable/3_3';
+import WasteWaste from './inputTable/4_1';
+import WasteAverage from './inputTable/4_2';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const[result, setResult] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
     const [method, setMethod] = useState(0)
+    const [startCalculation, setStartCalculation] = useState(false)
+    console.log("Category", category)
+    console.log("method", method)
+    console.log("calculation", startCalculation)
     useEffect(() => {
         const cookies = new Cookies();
         if (!cookies.get('token')) {
@@ -27,9 +41,23 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     setListData([...res.data])
                     setCategory(0)
                     setMethod(0)
+                    setStartCalculation(false)
                 })
         }
     }, [SERVER_URL, navigate])
+    const displaycase = () => {
+        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data)=>{setResult(data)}} />
+        if (category === 0 & method === 1) return <PurchasedHybrid />
+        if (category === 0 & method === 2) return <PurchasedAverage />
+        if (category === 0 & method === 3) return <PurchasedSpend />
+        if (category === 3 & method === 0) return <UpstreamFuel />
+        if (category === 3 & method === 1) return <UpstreamDistance />
+        if (category === 3 & method === 2) return <UpstreamSpend />
+        if (category === 4 & method === 0) return <WasteWaste />
+        if (category === 4 & method === 1) return <WasteAverage />
+        else return <PurchasedSupplier  onChange={(data)=>{setResult(data)}} />
+    }
+    const Emission_Scope3 = "430K"
     return (
         <div className='CalculationPage' onClick={() => setSideBarFlag(false)}>
             <Header sideBarFlag={sideBarFlag} setSideBarFlag={setSideBarFlag} />
@@ -63,49 +91,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                             }
                         </div>
                         <div className='box'>
-                            <span className='title'>Input Data</span>
-                            <div className='table-container'>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>Purchased good</th>
-                                            <th>Supplier</th>
-                                            <th>Quantities purchased(kg)</th>
-                                            <th>Surpplier-specific(kgco2/kg)</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Cement</td>
-                                            <td>Supplier C</td>
-                                            <td><input type='text' placeholder='200000' className='Input_form'/></td>
-                                            <td><input type='text' placeholder='0.15' className='Input_form'/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Plaster</td>
-                                            <td>Supplier D</td>
-                                            <td><input type='text' placeholder='600000' className='Input_form'/></td>
-                                            <td><input type='text' placeholder='0.1' className='Input_form'/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Paint</td>
-                                            <td>Supplier E</td>
-                                            <td><input type='text' placeholder='200000' className='Input_form'/></td>
-                                            <td><input type='text' placeholder='0.1' className='Input_form'/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Timber</td>
-                                            <td>Supplier F</td>
-                                            <td><input type='text' placeholder='100000' className='Input_form'/></td>
-                                            <td><input type='text' placeholder='0.25' className='Input_form'/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Concrete</td>
-                                            <td>Supplier G</td>
-                                            <td><input type='text' placeholder='50000' className='Input_form'/></td>
-                                            <td><input type='text' placeholder='0.20' className='Input_form'/></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            {displaycase()}
                             <div className='button'>Upload Data</div>
                         </div>
                     </div>
@@ -116,7 +102,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                 <div className='top'>
                                     <span>Scope 3 Emission:</span>
                                     <div>
-                                        <span>436.51K</span>
+                                        <span>{result}</span>
+                                        {/* <span>436.51K</span> */}
                                         <span>38.57%</span>
                                     </div>
                                 </div>
@@ -145,7 +132,14 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                 <span className='right'>46%</span>
                             </div>
                         </div>
-                        <div className='button'>Start Calculation</div>
+                        {startCalculation ?
+                            <div className='button' onClick={() => { setStartCalculation(!startCalculation) }}>
+                                Start Calculation
+                            </div> :
+                            <div className='button red' onClick={() => { setStartCalculation(!startCalculation) }}>
+                                Cancel Calculation
+                            </div>
+                        }
                         <div className='button red' onClick={() => navigate('/display')} >Emission display</div>
                     </div>
                 </div>
