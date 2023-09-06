@@ -20,7 +20,7 @@ import WasteAverage from './inputTable/4_2';
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const[result, setResult] = useState(0);
+    const [result, setResult] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
@@ -46,7 +46,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }, [SERVER_URL, navigate])
     const displaycase = () => {
-        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data)=>{setResult(data)}} />
+        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult(data) }} />
         if (category === 0 & method === 1) return <PurchasedHybrid />
         if (category === 0 & method === 2) return <PurchasedAverage />
         if (category === 0 & method === 3) return <PurchasedSpend />
@@ -55,9 +55,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 3 & method === 2) return <UpstreamSpend />
         if (category === 4 & method === 0) return <WasteWaste />
         if (category === 4 & method === 1) return <WasteAverage />
-        else return <PurchasedSupplier  onChange={(data)=>{setResult(data)}} />
+        else return <PurchasedSupplier onChange={(data) => { setResult(data) }} />
     }
-    const Emission_Scope3 = "430K"
     return (
         <div className='CalculationPage' onClick={() => setSideBarFlag(false)}>
             <Header sideBarFlag={sideBarFlag} setSideBarFlag={setSideBarFlag} />
@@ -102,27 +101,35 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                                 <div className='top'>
                                     <span>Scope 3 Emission:</span>
                                     <div>
-                                        <span>{result}</span>
-                                        {/* <span>436.51K</span> */}
-                                        <span>38.57%</span>
+                                        {startCalculation ?
+                                            <span></span> :
+                                            <span>{result / 1000}K</span>
+                                        }
+                                        <span>KgCO2e</span>
                                     </div>
                                 </div>
                                 <div className='bottom'>
                                     <div className='item'>
                                         <span>Scope 1:</span>
-                                        <span>334.65K</span>
+                                        {startCalculation ?
+                                            <span></span> :
+                                            <span>{(result / 1000 * 0.54).toFixed(1)}K</span>
+                                        }
                                     </div>
                                     <div className='item'>
                                         <span>Scope 2:</span>
-                                        <span>132.88K</span>
+                                        {startCalculation ?
+                                            <span></span> :
+                                            <span>{(result / 1000 * 0.46).toFixed(1)}K</span>
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <span className='title'>Scope 3 YOY Performance:</span>
                         <div className='performance'>
-                            <span>423K</span>
-                            <span>436K</span>
+                            <span>{(result / 1000 * 0.968).toFixed(1)}K</span>
+                            <span>{result / 1000}K</span>
                             <span>-3.2%</span>
                         </div>
                         <span className='title'>Emission Source:</span>
