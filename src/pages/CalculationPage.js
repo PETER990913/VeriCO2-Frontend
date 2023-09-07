@@ -16,6 +16,9 @@ import UpstreamDistance from './inputTable/3_2';
 import UpstreamSpend from './inputTable/3_3';
 import WasteWaste from './inputTable/4_1';
 import WasteAverage from './inputTable/4_2';
+import BusinessFuel from './inputTable/5_1';
+import EmployeeDistance from './inputTable/6_1';
+import EmployeeAverage from './inputTable/6_2';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
@@ -56,6 +59,9 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 3 & method === 2) return <UpstreamSpend />
         if (category === 4 & method === 0) return <WasteWaste />
         if (category === 4 & method === 1) return <WasteAverage />
+        if (category === 5 & method === 0) return <BusinessFuel />
+        if (category === 6 & method === 0) return <EmployeeDistance />
+        if (category === 6 & method === 1) return <EmployeeAverage />
         else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
 
@@ -82,7 +88,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     </div>
                 </div>
             </div>
-            <span className='title'>Scope 3 YOY Performance:</span>
+            <span className='title_1'>Scope 3 YOY Performance:</span>
             <div className='performance'>
                 <span>{(result1_1 / 1000 * 0.968).toFixed(1)}K</span>
                 <span>{result1_1 / 1000}K</span>
@@ -118,7 +124,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     </div>
                 </div>
             </div>
-            <span className='title'>Scope 3 YOY Performance:</span>
+            <span className='title_1'>Scope 3 YOY Performance:</span>
             <div className='performance'>
                 <span>{(result1_2 / 1000 * 0.968).toFixed(1)}K</span>
                 <span>{result1_2 / 1000}K</span>
@@ -154,7 +160,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                     </div>
                 </div>
             </div>
-            <span className='title'>Scope 3 YOY Performance:</span>
+            <span className='title_1'>Scope 3 YOY Performance:</span>
             <div className='performance'>
                 <span>000</span>
                 <span>000</span>

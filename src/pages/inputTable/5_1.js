@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../App.scss'
-function WasteAverage() {
+function BusinessFuel() {
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
@@ -47,17 +47,30 @@ function WasteAverage() {
                         <tr>
                             <th>Employee Group</th>
                             <th>Number of employees  in group</th>
-                            <th>Flight type</th>
-                            <th>Location</th>
-                            <th>Distance(km)</th>
+                            <th colSpan={2}>Flight type</th>
+                            <th colSpan={2}>Distance(km)</th>
                             <th>Emission factor(kg CO2e/ vehicle-km)</th>
                         </tr>
                         <tr>
                             <td>Group 1</td>
                             <td><input type='text' defaultValue='10' className='Input_form' /></td>
-                            <td>Long haul</td>
-                            <td><input type='text' defaultValue="100" className='Input_form' /></td>
-                            <td><input type='text' defaultValue="4" className='Input_form' /></td>
+                            <td colSpan={2}>Long haul</td>
+                            <td colSpan={2}><input type='text' defaultValue="10000" className='Input_form' /></td>
+                            <td><input type='text' defaultValue="5" className='Input_form' /></td>
+                        </tr>
+                        <tr>
+                            <td>Group 2</td>
+                            <td><input type='text' defaultValue='20' className='Input_form' /></td>
+                            <td colSpan={2}>Short haul</td>
+                            <td colSpan={2}><input type='text' defaultValue="15000" className='Input_form' /></td>
+                            <td><input type='text' defaultValue="6" className='Input_form' /></td>
+                        </tr>
+                        <tr>
+                            <td>Group 3</td>
+                            <td><input type='text' defaultValue='100' className='Input_form' /></td>
+                            <td colSpan={2}>Long haul</td>
+                            <td colSpan={2}><input type='text' defaultValue="12000" className='Input_form' /></td>
+                            <td><input type='text' defaultValue="5" className='Input_form' /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,4 +79,4 @@ function WasteAverage() {
     )
 }
 
-export default WasteAverage
+export default BusinessFuel
