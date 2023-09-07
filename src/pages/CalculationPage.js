@@ -24,6 +24,10 @@ import ProcessingSite from './inputTable/9_1';
 import ProcessingAverage from './inputTable/9_2';
 import UseDirect from './inputTable/10_1';
 import UseIndirect from './inputTable/10_2';
+import EndWaste from './inputTable/11_1';
+import Downstream from './inputTable/12_1';
+import FranchisesSpecific from './inputTable/13_1';
+import FranchisesAverage from './inputTable/13_2';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
@@ -72,6 +76,10 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 9 & method === 1) return <ProcessingAverage />
         if (category === 10 & method === 0) return <UseDirect />
         if (category === 10 & method === 1) return <UseIndirect />
+        if (category === 11 & method === 0) return <EndWaste />
+        if (category === 12 & method === 0) return <Downstream />
+        if (category === 13 & method === 0) return <FranchisesSpecific />
+        if (category === 13 & method === 1) return <FranchisesAverage />
         else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
 
