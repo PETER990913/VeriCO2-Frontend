@@ -28,6 +28,8 @@ import EndWaste from './inputTable/11_1';
 import Downstream from './inputTable/12_1';
 import FranchisesSpecific from './inputTable/13_1';
 import FranchisesAverage from './inputTable/13_2';
+import InvestmentSpecific from './inputTable/14_1';
+import InvestmentAverage from './inputTable/14_2';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
@@ -80,6 +82,8 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 12 & method === 0) return <Downstream />
         if (category === 13 & method === 0) return <FranchisesSpecific />
         if (category === 13 & method === 1) return <FranchisesAverage />
+        if (category === 14 & method === 0) return <InvestmentSpecific />
+        if (category === 14 & method === 1) return <InvestmentAverage />
         else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
 

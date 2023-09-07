@@ -28,21 +28,15 @@ function InvestmentSpecific() {
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Clothing outlet</td>
-                            <td><input type='text' defaultValue='400' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='10000' className='Input_form' /></td>
+                            <td>Equity investment in joint venture</td>
+                            <td><input type='text' defaultValue='1600000' className='Input_form' /></td>
+                            <td><input type='text' defaultValue='25' className='Input_form' /></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Clothing outlet</td>
-                            <td><input type='text' defaultValue='700' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='10000' className='Input_form' /></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Clothing outlet</td>
-                            <td><input type='text' defaultValue='500' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='10000' className='Input_form' /></td>
+                            <td>Equity investment in joint venture</td>
+                            <td><input type='text' defaultValue='60000' className='Input_form' /></td>
+                            <td><input type='text' defaultValue='25' className='Input_form' /></td>
                         </tr>
                     </tbody>
                 </table>
