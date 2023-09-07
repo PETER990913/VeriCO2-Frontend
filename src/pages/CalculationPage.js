@@ -19,6 +19,11 @@ import WasteAverage from './inputTable/4_2';
 import BusinessFuel from './inputTable/5_1';
 import EmployeeDistance from './inputTable/6_1';
 import EmployeeAverage from './inputTable/6_2';
+import UpstreamAsset from './inputTable/7_1';
+import ProcessingSite from './inputTable/9_1';
+import ProcessingAverage from './inputTable/9_2';
+import UseDirect from './inputTable/10_1';
+import UseIndirect from './inputTable/10_2';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const navigate = useNavigate();
@@ -62,6 +67,11 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 5 & method === 0) return <BusinessFuel />
         if (category === 6 & method === 0) return <EmployeeDistance />
         if (category === 6 & method === 1) return <EmployeeAverage />
+        if (category === 7 & method === 0) return <UpstreamAsset />
+        if (category === 9 & method === 0) return <ProcessingSite />
+        if (category === 9 & method === 1) return <ProcessingAverage />
+        if (category === 10 & method === 0) return <UseDirect />
+        if (category === 10 & method === 1) return <UseIndirect />
         else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
 
