@@ -40,6 +40,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [result1_3, setResult1_3] = useState(0);
     const [result1_4, setResult1_4] = useState(0);
     const [result3_1, setResult3_1] = useState(0);
+    const [result3_2, setResult3_2] = useState(0);
     const [result1_15, setResult1_15] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
