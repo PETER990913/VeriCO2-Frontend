@@ -25,7 +25,7 @@ function PurchasedHybrid({onChange}) {
     const [v21, setV21]= useState(0.50);
 
     useEffect(()=>{
-        onChange(Number(v0)*Number(v1)+Number(v2)*Number(v3)+Number(v4)*Number(v5)+Number(v6)*Number(v7)+Number(v8)*Number(v9))
+        onChange(Number(v0)*Number(v1)+Number(v2)*Number(v3)+Number(v4)*Number(v5)+Number(v6)*Number(v7)+Number(v8)*Number(v9)+Number(v10)*Number(v11)+Number(v4)*Number(v12)*Number(v13)+Number(v6)*Number(v14)*Number(v15)+Number(v8)*Number(v16)*Number(v17)+Number(v10)*Number(v18)*Number(v19)+Number(v20)*Number(v21))
     },[
         v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v16,v17,v18,v19,v20,v21
     ])
