@@ -14,7 +14,7 @@ function WasteAverage({onChange}) {
     const [v10, setV10]= useState(30);
 
     useEffect(()=>{
-        onChange(Number(v0)*Number(v1)*Number(v2)+Number(v0)*Number(v3)*Number(v4)+Number(v0)*Number(v5)*Number(v6)+Number(v0)*Number(v7)*Number(v8)+Number(v0)*Number(v9)*Number(v10))
+        onChange((Number(v0)*Number(v1)*Number(v2)+Number(v0)*Number(v3)*Number(v4)+Number(v0)*Number(v5)*Number(v6)+Number(v0)*Number(v7)*Number(v8)+Number(v0)*Number(v9)*Number(v10))/100)
     },[
         v0,v1,v2,v3,v4,v5,v6,v7,v8,v9, v10
     ])
