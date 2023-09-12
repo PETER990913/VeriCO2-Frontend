@@ -42,6 +42,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [result3_1, setResult3_1] = useState(0);
     const [result3_2, setResult3_2] = useState(0);
     const [result1_15, setResult1_15] = useState(0);
+    const [result3_3, setResult3_3] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
@@ -67,13 +68,13 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }, [SERVER_URL, navigate])
     const displaycase = () => {
-        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
-        if (category === 0 & method === 1) return <PurchasedHybrid onChange={(data) => { setResult1_2(data) }} />
-        if (category === 0 & method === 2) return <PurchasedAverage onChange={(data) => { setResult1_3(data) }} />
-        if (category === 0 & method === 3) return <PurchasedSpend onChange={(data) => { setResult1_4(data) }} />
-        if (category === 3 & method === 0) return <UpstreamFuel onChange={(data) => { setResult3_1(data) }} />
-        if (category === 3 & method === 1) return <UpstreamDistance onChange={(data) => { setResult3_2(data) }} />
-        if (category === 3 & method === 2) return <UpstreamSpend />
+        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult1_1(data)}} />
+        if (category === 0 & method === 1) return <PurchasedHybrid onChange={(data) => { setResult1_2(data)}} />
+        if (category === 0 & method === 2) return <PurchasedAverage onChange={(data) => { setResult1_3(data)}} />
+        if (category === 0 & method === 3) return <PurchasedSpend onChange={(data) => { setResult1_4(data)}} />
+        if (category === 3 & method === 0) return <UpstreamFuel onChange={(data) => { setResult3_1(data)}} />
+        if (category === 3 & method === 1) return <UpstreamDistance onChange={(data) => { setResult3_2(data)}} />
+        if (category === 3 & method === 2) return <UpstreamSpend onChange={(data) => { setResult3_3(data) }}/>
         if (category === 4 & method === 0) return <WasteWaste />
         if (category === 4 & method === 1) return <WasteAverage />
         if (category === 5 & method === 0) return <BusinessFuel />
@@ -347,6 +348,42 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                 </div>
             </div>
         </div>
+        if (category === 3 & method === 2 & startCalculation === true) return <div>
+        <div className='scopes-container'>
+            <div className='scopes'>
+                <div className='top'>
+                    <span>Scope 3 Emission:</span>
+                    <div>
+                        <span>{(result3_3 / 1000).toFixed(1)}K</span>
+                        <span>KgCO2e</span>
+                    </div>
+                </div>
+                <div className='bottom'>
+                    <div className='item'>
+                        <span>Scope 1:</span>
+                        <span>{(result3_3 / 1000 * 0.54).toFixed(1)}K</span>
+                    </div>
+                    <div className='item'>
+                        <span>Scope 2:</span>
+                        <span>{(result3_3 / 1000 * 0.46).toFixed(1)}K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span className='title_1'>Scope 3 YOY Performance:</span>
+        <div className='performance'>
+            <span>{(result3_3 / 1000 * 0.968).toFixed(1)}K</span>
+            <span>{result3_3 / 1000}K</span>
+            <span>-3.2%</span>
+        </div>
+        <span className='title'>Emission Source:</span>
+        <div className='source-container'>
+            <div className='source'>
+                <span className='left'>54%</span>
+                <span className='right'>46%</span>
+            </div>
+        </div>
+    </div>
         else return <div>
             <div className='scopes-container'>
                 <div className='scopes'>
