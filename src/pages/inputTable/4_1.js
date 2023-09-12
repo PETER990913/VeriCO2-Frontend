@@ -29,27 +29,27 @@ function WasteWaste({onChange}) {
                         </tr>
                         <tr>
                             <td>Plastic</td>
-                            <td><input type='text' defaultValue="2000" className='Input_form' /></td>
+                            <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
                             <td>Landfill</td>
-                            <td><input type='text' defaultValue='40' className='Input_form' /></td>
+                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV1(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Plastic</td>
-                            <td><input type='text' defaultValue="5000" className='Input_form' /></td>
+                            <td><input type='text' value={v2} className='Input_form' onChange={(e)=>{setV2(e.target.value)}}/></td>
                             <td> Incinerated with energy recovery </td>
-                            <td><input type='text' defaultValue='2' className='Input_form' /></td>
+                            <td><input type='text' value={v3} className='Input_form' onChange={(e)=>{setV3(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Plastic</td>
-                            <td><input type='text' defaultValue="4000" className='Input_form' /></td>
+                            <td><input type='text' value={v4} className='Input_form' onChange={(e)=>{setV4(e.target.value)}}/></td>
                             <td> Recycled </td>
-                            <td><input type='text' defaultValue='10' className='Input_form' /></td>
+                            <td><input type='text' value={v5} className='Input_form' onChange={(e)=>{setV5(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Plastic</td>
-                            <td><input type='text' defaultValue="5000" className='Input_form' /></td>
+                            <td><input type='text' value={v6} className='Input_form' onChange={(e)=>{setV6(e.target.value)}}/></td>
                             <td> Wastewater </td>
-                            <td><input type='text' defaultValue='0.5' className='Input_form' /></td>
+                            <td><input type='text' value={v7} className='Input_form' onChange={(e)=>{setV7(e.target.value)}}/></td>
                         </tr>
                     </tbody>
                 </table>
