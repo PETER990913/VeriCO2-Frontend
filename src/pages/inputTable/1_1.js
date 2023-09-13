@@ -29,7 +29,7 @@ function PurchasedSupplier({onChange}) {
                             <th>Purchased good</th>
                             <th>Supplier</th>
                             <th>Quantities purchased(kg)</th>
-                            <th>Surpplier-specific(kgco2/kg)</th>
+                            <th>Surpplier-specific emission factor(kgco2/kg)</th>
                         </tr>
                         <tr>
                             <td>Cement</td>
