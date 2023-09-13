@@ -41,7 +41,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     }
     const handleFileParse = (e) => {
         const files = e.target.files;
-        console.log(files);
+        console.log("file", files);
         if (files) {
             const formData = new FormData()
             formData.append('csv', files[0]);
@@ -49,7 +49,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [result1_1, setResult1_1] = useState(0);
     const [result1_2, setResult1_2] = useState(0);
     const [result1_3, setResult1_3] = useState(0);
@@ -63,6 +63,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [result5_1, setResult5_1] = useState(0);
     const [result6_1, setResult6_1] = useState(0);
     const [result6_2, setResult6_2] = useState(0);
+    const [result7_1, setResult7_1] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
@@ -476,7 +477,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                 </div>
             </div>
         </div>
-        if (category === 5 & method == 0 & startCalculation === true) return <div>
+        if (category === 5 & method === 0 & startCalculation === true) return <div>
             <div className='scopes-container'>
                 <div className='scopes'>
                     <div className='top'>
@@ -512,7 +513,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                 </div>
             </div>
         </div>
-        if (category === 6 & method == 0 & startCalculation === true) return <div>
+        if (category === 6 & method === 0 & startCalculation === true) return <div>
             <div className='scopes-container'>
                 <div className='scopes'>
                     <div className='top'>
@@ -548,7 +549,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                 </div>
             </div>
         </div>
-        if (category === 6 & method == 1 & startCalculation === true) return <div>
+        if (category === 6 & method === 1 & startCalculation === true) return <div>
             <div className='scopes-container'>
                 <div className='scopes'>
                     <div className='top'>
