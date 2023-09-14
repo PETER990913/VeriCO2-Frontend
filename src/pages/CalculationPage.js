@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setTab } from '../redux/actions/index';
+import { readFile } from 'xlsx'
 import '../App.scss';
 import PurchasedSupplier from './inputTable/1_1';
 import PurchasedHybrid from './inputTable/1_2';
@@ -36,6 +37,45 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
     const [data, setData] = useState()
     console.log(data)
+
+    const readXLSX = (filepath) => {
+        var workbook = readFile(filepath);
+        var sheet_name_list = workbook.SheetNames;
+        console.log(sheet_name_list, workbook)
+        sheet_name_list.forEach(function (y) {
+            var worksheet = workbook.Sheets[y];
+            var headers = {};
+            var data = [];
+            for (var z in worksheet) {
+                if (z[0] === '!') continue;
+                //parse out the column, row, and value
+                var tt = 0;
+                for (var i = 0; i < z.length; i++) {
+                    if (!isNaN(z[i])) {
+                        tt = i;
+                        break;
+                    }
+                };
+                var col = z.substring(0, tt);
+                var row = parseInt(z.substring(tt));
+                var value = worksheet[z].v;
+
+                //store header names
+                if (row == 1 && value) {
+                    headers[col] = value;
+                    continue;
+                }
+
+                if (!data[row]) data[row] = {};
+                data[row][headers[col]] = value;
+            }
+            //drop those first two rows which are empty
+            data.shift();
+            data.shift();
+            console.log(data);
+        });
+    }
+
     const onClick = () => {
         fileRef.current.click()
     }
@@ -73,6 +113,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const [result13_1, setResult13_1] = useState(0);
     const [result13_2, setResult13_2] = useState(0);
     const [result14_1, setResult14_1] = useState(0);
+    const [result14_2, setResult14_2] = useState(0);
     dispatch(setTab(2));
     const [listData, setListData] = useState([])
     const [category, setCategory] = useState(0)
@@ -120,7 +161,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 13 & method === 0) return <FranchisesSpecific onChange={(data) => { setResult13_1(data) }} />
         if (category === 13 & method === 1) return <FranchisesAverage onChange={(data) => { setResult13_2(data) }} />
         if (category === 14 & method === 0) return <InvestmentSpecific onChange={(data) => { setResult14_1(data) }} />
-        if (category === 14 & method === 1) return <InvestmentAverage />
+        if (category === 14 & method === 1) return <InvestmentAverage onChange={(data) => { setResult14_2(data) }} />
         if (category === 2 & method === 0) return <FuelTransmission onChange={(data) => { setResult1_15(data) }} />
         else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
     }
@@ -944,6 +985,42 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
             <div className='performance'>
                 <span>{(result14_1 / 1000 * 0.968).toFixed(1)}K</span>
                 <span>{(result14_1 / 1000).toFixed(1)}K</span>
+                <span>-3.2%</span>
+            </div>
+            <span className='title'>Emission Source:</span>
+            <div className='source-container'>
+                <div className='source'>
+                    <span className='left'>54%</span>
+                    <span className='right'>46%</span>
+                </div>
+            </div>
+        </div>
+        if (category === 14 & method === 1 & startCalculation === true) return <div>
+            <div className='scopes-container'>
+                <div className='scopes'>
+                    <div className='top'>
+                        <span>Scope 3 Emission:</span>
+                        <div>
+                            <span>{(result14_2 / 1000).toFixed(1)}K</span>
+                            <span>KgCO2e</span>
+                        </div>
+                    </div>
+                    <div className='bottom'>
+                        <div className='item'>
+                            <span>Scope 1:</span>
+                            <span>{(result14_2 / 1000 * 0.54).toFixed(1)}K</span>
+                        </div>
+                        <div className='item'>
+                            <span>Scope 2:</span>
+                            <span>{(result14_2 / 1000 * 0.46).toFixed(1)}K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span className='title_1'>Scope 3 YOY Performance:</span>
+            <div className='performance'>
+                <span>{(result14_2 / 1000 * 0.968).toFixed(1)}K</span>
+                <span>{(result14_2 / 1000).toFixed(1)}K</span>
                 <span>-3.2%</span>
             </div>
             <span className='title'>Emission Source:</span>
