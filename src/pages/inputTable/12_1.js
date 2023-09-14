@@ -1,6 +1,14 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../../App.scss'
-function Downstream() {
+function Downstream({onChange}) {
+    const [v0, setV0]= useState(9000);
+    const [v1, setV1]= useState(5000);
+    const [v2, setV2]= useState(10000);
+    useEffect(()=>{
+        onChange(Number(v0)*Number(v1)*Number(v2))
+    },[
+        v0,v1,v2
+    ])
     return (
         // <div className='SignupPage' onClick={() => setfake1(true)}>
         <div className='container'>
