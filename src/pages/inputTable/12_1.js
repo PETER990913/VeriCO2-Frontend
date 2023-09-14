@@ -5,7 +5,7 @@ function Downstream({onChange}) {
     const [v1, setV1]= useState(5000);
     const [v2, setV2]= useState(10000);
     useEffect(()=>{
-        onChange(Number(v0)*Number(v1)*Number(v2))
+        onChange(Number(v0)*Number(v1)/(Number(v1)+Number(v2)))
     },[
         v0,v1,v2
     ])
