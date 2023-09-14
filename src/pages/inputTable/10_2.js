@@ -13,7 +13,7 @@ function UseIndirect({onChange}) {
     const [v9, setV9]= useState(1.2);
     const [v10, setV10]= useState(0.5);
     useEffect(()=>{
-        onChange(Number(v0)*Number(v1)*Number(v2)*Number(v3)+Number(v4)*Number(v5)*Number(v6)*Number(v7)+Number(v8)*Number(v9)*Number(v10))
+        onChange((Number(v0)*Number(v1)*Number(v2)*Number(v3)*Number(v4)+Number(v0)*Number(v5)*Number(v2)*Number(v6)*Number(v7)+Number(v0)*Number(v8)*Number(v2)*Number(v9)*Number(v10))/100)
     },[
         v0,v1,v2,v3,v4,v5,v6,v7,v8,v9, v10,
     ])
@@ -34,23 +34,23 @@ function UseIndirect({onChange}) {
                         </tr>
                         <tr>
                             <td>30°C cotton wash</td>
-                            <td rowSpan={3}><input type='text' defaultValue='1000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='20' className='Input_form' /></td>
-                            <td rowSpan={3}><input type='text' defaultValue='2000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.40' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.5' className='Input_form' /></td>
+                            <td rowSpan={3}><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
+                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV1(e.target.value)}}/></td>
+                            <td rowSpan={3}><input type='text' value={v2} className='Input_form' onChange={(e)=>{setV2(e.target.value)}}/></td>
+                            <td><input type='text' value={v3} className='Input_form' onChange={(e)=>{setV3(e.target.value)}}/></td>
+                            <td><input type='text' value={v4} className='Input_form' onChange={(e)=>{setV4(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>40°C cotton wash</td>
-                            <td><input type='text' defaultValue='40' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.50' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.5' className='Input_form' /></td>
+                            <td><input type='text' value={v5} className='Input_form' onChange={(e)=>{setV5(e.target.value)}}/></td>
+                            <td><input type='text' value={v6} className='Input_form' onChange={(e)=>{setV6(e.target.value)}}/></td>
+                            <td><input type='text' value={v7} className='Input_form' onChange={(e)=>{setV7(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>90°C cotton wash</td>
-                            <td><input type='text' defaultValue='40' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='1.20' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='0.5' className='Input_form' /></td>
+                            <td><input type='text' value={v8} className='Input_form' onChange={(e)=>{setV8(e.target.value)}}/></td>
+                            <td><input type='text' value={v9} className='Input_form' onChange={(e)=>{setV9(e.target.value)}}/></td>
+                            <td><input type='text' value={v10} className='Input_form' onChange={(e)=>{setV10(e.target.value)}}/></td>
                         </tr>
                     </tbody>
                 </table>
