@@ -32,25 +32,25 @@ function InvestmentSpecific({onChange}) {
                             <td>1</td>
                             <td>Equity Investment in subsidiary</td>
                             <td><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
-                            <td><input type='text' defaultValue='40' className='Input_form' /></td>
+                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV1(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Equity Investment in subsidiary</td>
-                            <td><input type='text' defaultValue='200000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='15' className='Input_form' /></td>
+                            <td><input type='text' value={v2} className='Input_form' onChange={(e)=>{setV2(e.target.value)}}/></td>
+                            <td><input type='text' value={v3} className='Input_form' onChange={(e)=>{setV3(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>Equity investment in joint venture</td>
-                            <td><input type='text' defaultValue='1600000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='25' className='Input_form' /></td>
+                            <td><input type='text' value={v4} className='Input_form' onChange={(e)=>{setV4(e.target.value)}}/></td>
+                            <td><input type='text' value={v5} className='Input_form' onChange={(e)=>{setV5(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>Equity investment in joint venture</td>
-                            <td><input type='text' defaultValue='60000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='25' className='Input_form' /></td>
+                            <td><input type='text' value={v6} className='Input_form' onChange={(e)=>{setV6(e.target.value)}}/></td>
+                            <td><input type='text' value={v7} className='Input_form' onChange={(e)=>{setV7(e.target.value)}}/></td>
                         </tr>
                     </tbody>
                 </table>
