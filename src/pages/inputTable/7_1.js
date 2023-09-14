@@ -15,7 +15,7 @@ function UpstreamAsset({onChange}) {
     const [v11, setV11]= useState(2000);
     const [v12, setV12]= useState(0.75);
     const [v13, setV13]= useState(5);
-    const [v14, setV14]= useState(5000);
+    const [v14, setV14]= useState(1500);
     useEffect(()=>{
         onChange(Number(v0)/(Number(v1)*Number(v2))*Number(v3)*Number(v4)+Number(v5)/(Number(v6)*Number(v7))*Number(v8)*Number(v9)+Number(v10)/(Number(v11)*Number(v12))*Number(v13)*Number(v14))
     },[
