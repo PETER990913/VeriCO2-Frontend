@@ -23,12 +23,12 @@ function Downstream({onChange}) {
                         </tr>
                         <tr>
                             <td>Factory 1</td>
-                            <td rowSpan={2}><input type='text' defaultValue='9000' className='Input_form' /></td>
-                            <td><input type='text' defaultValue='5000' className='Input_form' /></td>
+                            <td rowSpan={2}><input type='text' value={v0} className='Input_form' onChange={(e)=>{setV0(e.target.value)}}/></td>
+                            <td><input type='text' value={v1} className='Input_form' onChange={(e)=>{setV1(e.target.value)}}/></td>
                         </tr>
                         <tr>
                             <td>Factory 2</td>
-                            <td><input type='text' defaultValue='10000' className='Input_form' /></td>
+                            <td><input type='text' value={v2} className='Input_form' onChange={(e)=>{setV2(e.target.value)}}/></td>
                         </tr>
                     </tbody>
                 </table>
