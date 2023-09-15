@@ -36,8 +36,7 @@ import FuelTransmission from './inputTable/1_15';
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
     const [data, setData] = useState()
-    console.log(data)
-
+    const [ dataset, setDataset] = useState([])
     const readXLSX = (filepath) => {
         var workbook = readFile(filepath);
         var sheet_name_list = workbook.SheetNames;
@@ -85,7 +84,12 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (files) {
             const formData = new FormData()
             formData.append('csv', files[0]);
-            setData(formData)
+            axios.post('http://localhost:4000/read-file', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            }
+        })
+            .then(res => setDataset(res.data.data));
         }
     }
     const navigate = useNavigate();
@@ -139,7 +143,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         }
     }, [SERVER_URL, navigate])
     const displaycase = () => {
-        if (category === 0 & method === 0) return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
+        if (category === 0 & method === 0) return <PurchasedSupplier dataset = {dataset} onChange={(data) => { setResult1_1(data) }} />
         if (category === 0 & method === 1) return <PurchasedHybrid onChange={(data) => { setResult1_2(data) }} />
         if (category === 0 & method === 2) return <PurchasedAverage onChange={(data) => { setResult1_3(data) }} />
         if (category === 0 & method === 3) return <PurchasedSpend onChange={(data) => { setResult1_4(data) }} />
@@ -1103,7 +1107,9 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                         <div className='box'>
                             {displaycase()}
                             <div className='button' onClick={onClick}>Upload Data</div>
-                            <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse} />
+                            {/* <div className='button' onClick={handleFileUpload}>Upload Data</div> */}
+                            <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse}/>
+                            {/* <input type="file" onChange={handleFileChange} /> */}
                         </div>
                     </div>
                     <div className='box'>
