@@ -6,7 +6,6 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setTab } from '../redux/actions/index';
-import { readFile } from 'xlsx'
 import '../App.scss';
 import PurchasedSupplier from './inputTable/1_1';
 import PurchasedHybrid from './inputTable/1_2';
@@ -35,46 +34,7 @@ import FuelTransmission from './inputTable/1_15';
 
 function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
     const fileRef = useRef()
-    const [data, setData] = useState()
     const [ dataset, setDataset] = useState([])
-    const readXLSX = (filepath) => {
-        var workbook = readFile(filepath);
-        var sheet_name_list = workbook.SheetNames;
-        console.log(sheet_name_list, workbook)
-        sheet_name_list.forEach(function (y) {
-            var worksheet = workbook.Sheets[y];
-            var headers = {};
-            var data = [];
-            for (var z in worksheet) {
-                if (z[0] === '!') continue;
-                //parse out the column, row, and value
-                var tt = 0;
-                for (var i = 0; i < z.length; i++) {
-                    if (!isNaN(z[i])) {
-                        tt = i;
-                        break;
-                    }
-                };
-                var col = z.substring(0, tt);
-                var row = parseInt(z.substring(tt));
-                var value = worksheet[z].v;
-
-                //store header names
-                if (row == 1 && value) {
-                    headers[col] = value;
-                    continue;
-                }
-
-                if (!data[row]) data[row] = {};
-                data[row][headers[col]] = value;
-            }
-            //drop those first two rows which are empty
-            data.shift();
-            data.shift();
-            console.log(data);
-        });
-    }
-
     const onClick = () => {
         fileRef.current.click()
     }
@@ -167,7 +127,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 14 & method === 0) return <InvestmentSpecific onChange={(data) => { setResult14_1(data) }} />
         if (category === 14 & method === 1) return <InvestmentAverage onChange={(data) => { setResult14_2(data) }} />
         if (category === 2 & method === 0) return <FuelTransmission onChange={(data) => { setResult1_15(data) }} />
-        else return <PurchasedSupplier onChange={(data) => { setResult1_1(data) }} />
+        else return <PurchasedSupplier  dataset = {dataset} onChange={(data) => { setResult1_1(data) }} />
     }
 
     const displayresult = () => {
