@@ -13,16 +13,18 @@ function PurchasedSupplier({onChange, dataset}) {
     const [v9, setV9]= useState(0.20);
 
     useEffect(() => {
-        console.log(dataset)
+        console.log('dataset', dataset)
         if(dataset.length){
-            setV0(dataset[0][0])
-            setV1(dataset[0][1])
-            setV2(dataset[1][0])
-            setV3(dataset[1][1])
-            setV4(dataset[2][0])
-            setV5(dataset[2][1])
-            setV6(dataset[3][0])
-            setV7(dataset[3][1])
+            setV0(dataset[0][0][0])
+            setV1(dataset[0][0][1])
+            setV2(dataset[0][1][0])
+            setV3(dataset[0][1][1])
+            setV4(dataset[0][2][0])
+            setV5(dataset[0][2][1])
+            setV6(dataset[0][3][0])
+            setV7(dataset[0][3][1])
+            setV8(dataset[0][4][0])
+            setV9(dataset[0][4][1])
         }
     }, [dataset])
 

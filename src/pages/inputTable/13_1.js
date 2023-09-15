@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import '../../App.scss'
-function FranchisesSpecific({onChange}) {
+function FranchisesSpecific({onChange, dataset}) {
     const [v0, setV0]= useState(100000);
     const [v1, setV1]= useState(20000);
     const [v2, setV2]= useState(25000);
@@ -11,6 +11,22 @@ function FranchisesSpecific({onChange}) {
     const [v7, setV7]= useState(30000);
     const [v8, setV8]= useState(30000);
     const [v9, setV9]= useState(10000);
+
+    useEffect(() => {
+        console.log('dataset', dataset)
+        if(dataset.length){
+            setV0(dataset[1][0][1])
+            setV1(dataset[1][0][2])
+            setV2(dataset[1][1][1])
+            setV3(dataset[1][1][2])
+            setV4(dataset[1][2][1])
+            setV5(dataset[1][2][2])
+            setV6(dataset[1][3][1])
+            setV7(dataset[1][3][2])
+            setV8(dataset[1][4][1])
+            setV9(dataset[1][4][2])
+        }
+    }, [dataset])
 
     useEffect(()=>{
         onChange(Number(v0)+Number(v1)+Number(v2)+Number(v3)+Number(v4)+Number(v5)+Number(v6)+Number(v7)+Number(v8)+Number(v9))

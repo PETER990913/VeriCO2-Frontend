@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import '../../App.scss'
 function InvestmentSpecific({onChange}) {
-    const [v0, setV0]= useState(100);
-    const [v1, setV1]= useState(30000);
-    const [v2, setV2]= useState(150);
-    const [v3, setV3]= useState(30000);
-    const [v4, setV4]= useState(400);
-    const [v5, setV5]= useState(10000);
-    const [v6, setV6]= useState(700);
-    const [v7, setV7]= useState(10000);
+    const [v0, setV0]= useState(120000);
+    const [v1, setV1]= useState(40);
+    const [v2, setV2]= useState(200000);
+    const [v3, setV3]= useState(15);
+    const [v4, setV4]= useState(1600000);
+    const [v5, setV5]= useState(25);
+    const [v6, setV6]= useState(60000);
+    const [v7, setV7]= useState(25);
 
     useEffect(()=>{
         onChange((Number(v0)*Number(v1)+Number(v2)*Number(v3)+Number(v4)*Number(v5)+Number(v6)*Number(v7))/100)

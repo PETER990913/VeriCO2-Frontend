@@ -122,7 +122,7 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
         if (category === 10 & method === 1) return <UseIndirect onChange={(data) => { setResult10_2(data) }} />
         if (category === 11 & method === 0) return <EndWaste onChange={(data) => { setResult11_1(data) }} />
         if (category === 12 & method === 0) return <Downstream onChange={(data) => { setResult12_1(data) }} />
-        if (category === 13 & method === 0) return <FranchisesSpecific onChange={(data) => { setResult13_1(data) }} />
+        if (category === 13 & method === 0) return <FranchisesSpecific dataset = {dataset} onChange={(data) => { setResult13_1(data) }} />
         if (category === 13 & method === 1) return <FranchisesAverage onChange={(data) => { setResult13_2(data) }} />
         if (category === 14 & method === 0) return <InvestmentSpecific onChange={(data) => { setResult14_1(data) }} />
         if (category === 14 & method === 1) return <InvestmentAverage onChange={(data) => { setResult14_2(data) }} />
@@ -1065,11 +1065,11 @@ function CalculationPage({ sideBarFlag, setSideBarFlag, SERVER_URL }) {
                             }
                         </div>
                         <div className='box'>
+
                             {displaycase()}
+
                             <div className='button' onClick={onClick}>Upload Data</div>
-                            {/* <div className='button' onClick={handleFileUpload}>Upload Data</div> */}
                             <input type="file" style={{ display: 'none' }} ref={fileRef} onChange={handleFileParse}/>
-                            {/* <input type="file" onChange={handleFileChange} /> */}
                         </div>
                     </div>
                     <div className='box'>
